@@ -1,4 +1,4 @@
 #pragma once
 
-extern unsigned int K_GAME_WIDTH;
-extern unsigned int K_GAME_HEIGHT;
+extern const unsigned int K_GAME_WIDTH;
+extern const unsigned int K_GAME_HEIGHT;

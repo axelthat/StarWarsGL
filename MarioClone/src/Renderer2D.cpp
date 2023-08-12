@@ -82,7 +82,7 @@ void Renderer2D::DrawQuad(glm::vec2 position, float rotation, glm::vec2 scale, g
 	glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 }
 
-void Renderer2D::DrawTexture(glm::vec2 position, float rotation, glm::vec2 scale, Texture& texture) {
+void Renderer2D::DrawTexture(glm::vec2 position, float rotation, glm::vec2 scale, Texture& texture, float u1, float v1, float u2, float v2) {
 	r_Data->spriteShader->Bind();
 
 	glm::mat4 transform = glm::translate(glm::mat4(1), { position.x, position.y, 0 }) *
@@ -90,6 +90,17 @@ void Renderer2D::DrawTexture(glm::vec2 position, float rotation, glm::vec2 scale
 		glm::scale(glm::mat4(1), { scale.x, scale.y, 0 });
 
 	r_Data->spriteShader->SetMatrix4("u_Model", transform);
+
+	// Adjust the UV coordinates
+	float vertices[] = {
+		-0.5f, -0.5f, u1, v1,
+		-0.5f,  0.5f, u1, v2,
+		 0.5f,  0.5f, u2, v2,
+		 0.5f, -0.5f, u2, v1
+	};
+
+	glBindBuffer(GL_ARRAY_BUFFER, r_Data->vbo);
+	glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(vertices), vertices);
 
 	texture.Bind();
 	glBindVertexArray(r_Data->vao);

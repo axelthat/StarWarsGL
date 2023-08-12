@@ -14,7 +14,7 @@ Ship::Ship(Game& game) : currentTexture(nullptr) {
 
 	game.RegisterGameEvent(*this);
 
-	currentTexture = &Texture::GetTexture("ShipFullHealth");
+	currentTexture = &Texture::GetTexture("Sprite");
 }
 
 Ship::~Ship() {
@@ -22,28 +22,53 @@ Ship::~Ship() {
 }
 
 void Ship::OnUpdate(float ts) {
+	Animation(ts);
 	Movement(ts);
 	Fire(ts);
 
 	for (auto& shipBullet : shipBullets) {
-		if (shipBullet.IsActive()) {
-			shipBullet.OnUpdate(ts);
-		}
+		shipBullet.OnUpdate(ts);
 	}
 }
 
 void Ship::OnRender() {
 	for (auto &shipBullet : shipBullets) {
-		if (shipBullet.IsActive()) {
-			shipBullet.OnRender();
-		}
+		shipBullet.OnRender();
 	}
 
-	Renderer2D::DrawTexture(m_Position, m_Rotation, m_Scale, *currentTexture);
+	Renderer2D::DrawTexture(
+		m_Position,
+		m_Rotation,
+		m_Scale,
+		*currentTexture,
+		animationTextureCoords[animationTextureOffset],
+		animationTextureCoords[animationTextureOffset + 1],
+		animationTextureCoords[animationTextureOffset + 2],
+		animationTextureCoords[animationTextureOffset + 3]
+	);
+	Renderer2D::DrawTexture(m_Position, m_Rotation, m_Scale, *currentTexture, 0.0f, 0.75f, 0.25f, 1.0f);
+}
+
+void Ship::Animation(float ts) {
+	bool isMoving = Input::GetKey(GLFW_KEY_W) || Input::GetKey(GLFW_KEY_S) || Input::GetKey(GLFW_KEY_A) || Input::GetKey(GLFW_KEY_D);
+
+	elapsedTime += ts;
+	if (elapsedTime >= animationSpeed) {
+		elapsedTime = 0.0f;
+
+		if (isMoving) {
+			animationTextureIndex = (animationTextureIndex + 4) % 16;
+			animationTextureOffset = 12 + animationTextureIndex;
+		}
+		else {
+			animationTextureIndex = (animationTextureIndex + 4) % 12;
+			animationTextureOffset = animationTextureIndex;
+		}
+	}
 }
 
 void Ship::Movement(float ts) {
-	const float speed = 300.0f;
+	const float speed = 600.0f;
 
 	glm::vec2 newPosition = m_Position;
 

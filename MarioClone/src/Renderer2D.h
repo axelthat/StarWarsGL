@@ -14,5 +14,5 @@ public:
 	static void EndScene();
 
 	static void DrawQuad(glm::vec2 position, float rotation, glm::vec2 scale, glm::vec4 color);
-	static void DrawTexture(glm::vec2 position, float rotation, glm::vec2 scale, Texture& texture);
+	static void DrawTexture(glm::vec2 position, float rotation, glm::vec2 scale, Texture& texture, float u1, float v1, float u2, float v2);
 };

@@ -25,11 +25,11 @@ void ShipBullet::OnRender() {
 	if (!active) {
 		return;
 	}
-	Renderer2D::DrawQuad(m_Position, m_Rotation, m_Scale, glm::vec4(1.0f, 0.0f, 0.0f, 1.0f));
+	Renderer2D::DrawQuad(m_Position, m_Rotation, m_Scale, glm::vec4(1.0f, 1.0f, 1.0f, 1.0f));
 }
 
 void ShipBullet::Reset(glm::vec2& shipPosition) {
-	m_Position = glm::vec2(shipPosition.x, shipPosition.y + 20.0f);
+	m_Position = glm::vec2(shipPosition.x, shipPosition.y + SHIP_BULLET_HEIGHT);
 	m_Rotation = 0.0f;
 	m_Scale = glm::vec2(SHIP_BULLET_WIDTH, SHIP_BULLET_HEIGHT);
 	active = true;

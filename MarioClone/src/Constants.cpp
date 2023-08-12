@@ -1,4 +1,4 @@
 #include "Constants.h"
 
-unsigned int K_GAME_WIDTH = 1920;
-unsigned int K_GAME_HEIGHT = 1080;
+const unsigned int K_GAME_WIDTH = 1920;
+const unsigned int K_GAME_HEIGHT = 1080;

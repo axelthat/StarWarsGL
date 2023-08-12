@@ -4,7 +4,7 @@
 #include "Renderer2D.h"
 
 Game::Game(unsigned int width, unsigned int height) :
-	width(width), height(height), camera(0, width, 0, height), ship(nullptr)
+	width(width), height(height), camera(0, width, 0, height), ship(nullptr), background(nullptr)
 {
 
 }
@@ -13,7 +13,10 @@ Game::~Game() {
 	Renderer2D::OnShutdown();
 
 	delete ship;
+	delete background;
+
 	ship = nullptr;
+	background = nullptr;
 }
 
 void Game::onInit() {
@@ -22,6 +25,7 @@ void Game::onInit() {
 
 	Renderer2D::OnInit();
 
+	background = new Background(*this);
 	ship = new Ship(*this);
 }
 
@@ -47,7 +51,10 @@ void Game::LoadAllShader() {
 }
 
 void Game::LoadAllTexture() {
-	Texture::LoadTexture("ShipFullHealth", "Texture/ship-full-health.png", true);
+	//Texture::LoadTexture("ShipFullHealth", "Texture/ship-full-health.png", true);
+	//Texture::LoadTexture("ShipEngines", "Texture/ship-engines.png", true);
+	Texture::LoadTexture("Sprite", "Texture/sprite.png", true);
+	Texture::LoadTexture("Background", "Texture/background.png", true);
 }
 
 void Game::RegisterGameEvent(IObject& object)

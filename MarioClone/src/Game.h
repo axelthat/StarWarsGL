@@ -4,6 +4,7 @@
 #include "Camera.h"
 #include "IObject.h"
 #include "Ship.h"
+#include "Background.h"
 
 class Game {
 private:
@@ -13,6 +14,7 @@ private:
 	std::vector<IObject*> scene_objects;
 
 	Ship* ship;
+	Background* background;
 
 public:
 	Game(unsigned int width, unsigned int height);

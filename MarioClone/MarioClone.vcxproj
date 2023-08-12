@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Background.cpp" />
     <ClCompile Include="src\Camera.cpp" />
     <ClCompile Include="src\Constants.cpp" />
     <ClCompile Include="src\glad.c" />
@@ -33,6 +34,7 @@
     <ClCompile Include="src\vendor\stbi_image.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Background.h" />
     <ClInclude Include="src\Camera.h" />
     <ClInclude Include="src\Constants.h" />
     <ClInclude Include="src\Game.h" />
