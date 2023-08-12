@@ -4,6 +4,7 @@
 #include <array>
 #include "Input.h"
 #include "Game.h"
+#include "Constants.h"
 
 void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods)
 {
@@ -22,9 +23,6 @@ void key_callback(GLFWwindow* window, int key, int scancode, int action, int mod
 
 int main(void)
 {
-	unsigned int width = 1920;
-	unsigned int height = 1080;
-
 	GLFWwindow* window;
 
 	/* Initialize the library */
@@ -37,7 +35,7 @@ int main(void)
 	glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
 
 	/* Create a windowed mode window and its OpenGL context */
-	window = glfwCreateWindow(width, height, "Hello World", NULL, NULL);
+	window = glfwCreateWindow(K_GAME_WIDTH, K_GAME_HEIGHT, "Hello World", NULL, NULL);
 	if (!window)
 	{
 		glfwTerminate();
@@ -59,7 +57,7 @@ int main(void)
 
 	std::cout << "Loaded OpenGL " << glGetString(GL_VERSION) << std::endl;
 
-	Game game = Game(width, height);
+	Game game = Game(K_GAME_WIDTH, K_GAME_HEIGHT);
 	game.onInit();
 
 	float currentTime = 0.0f;

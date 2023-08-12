@@ -4,24 +4,25 @@
 
 #include "IObject.h"
 #include "Texture.h"
-#include "ShipBullet.h"
 
 class Game;
 
-class Ship: public IObject {
+class ShipBullet : public IObject {
 private:
-	Texture* currentTexture;
-	std::vector<ShipBullet> shipBullets;
+	bool active = false;
 
 public:
-	Ship(Game& game);
-	~Ship();
+	ShipBullet(glm::vec2& shipPosition);
+	~ShipBullet();
 
 public:
 	void OnUpdate(float ts) override;
 	void OnRender() override;
 
+	void Reset(glm::vec2& shipPosition);
+
+	bool IsActive() { return active; };
+
 private:
 	void Movement(float ts);
-	void Fire(float ts);
 };

@@ -2,6 +2,7 @@
 
 #include <string>
 #include "glm/glm.hpp"
+#include "Input.h"
 
 class IObject {
 protected:

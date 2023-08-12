@@ -29,7 +29,7 @@ void Game::onUpdate(float ts) {
 	for (int i = 0; i < scene_objects.size(); i++)
 		scene_objects[i]->OnUpdate(ts);
 
-	camera.SetPosition({ ship->GetPosition().x + width / 2, ship->GetPosition().y });
+	camera.SetPosition(camera.GetPosition());
 }
 
 void Game::onRender() {
@@ -43,6 +43,7 @@ void Game::onRender() {
 
 void Game::LoadAllShader() {
 	Shader::LoadShader("Sprite", "Shader/Sprite.vert.glsl", "Shader/Sprite.frag.glsl");
+	Shader::LoadShader("Flat", "Shader/Flat.vert.glsl", "Shader/Flat.frag.glsl");
 }
 
 void Game::LoadAllTexture() {

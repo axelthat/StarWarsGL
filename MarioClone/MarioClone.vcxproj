@@ -20,6 +20,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Camera.cpp" />
+    <ClCompile Include="src\Constants.cpp" />
     <ClCompile Include="src\glad.c" />
     <ClCompile Include="src\Game.cpp" />
     <ClCompile Include="src\Input.cpp" />
@@ -27,17 +28,20 @@
     <ClCompile Include="src\Renderer2D.cpp" />
     <ClCompile Include="src\Shader.cpp" />
     <ClCompile Include="src\Ship.cpp" />
+    <ClCompile Include="src\ShipBullet.cpp" />
     <ClCompile Include="src\Texture.cpp" />
     <ClCompile Include="src\vendor\stbi_image.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Camera.h" />
+    <ClInclude Include="src\Constants.h" />
     <ClInclude Include="src\Game.h" />
     <ClInclude Include="src\Input.h" />
     <ClInclude Include="src\IObject.h" />
     <ClInclude Include="src\Renderer2D.h" />
     <ClInclude Include="src\Shader.h" />
     <ClInclude Include="src\Ship.h" />
+    <ClInclude Include="src\ShipBullet.h" />
     <ClInclude Include="src\Texture.h" />
     <ClInclude Include="src\vendor\stbi_image.h" />
   </ItemGroup>
